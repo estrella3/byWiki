@@ -1,0 +1,35 @@
+.d h1 {
+    color:#7a5230;
+}
+.d h1:before {
+    border-left:5px solid #fff8dc;
+}
+.d hr.title {
+    color:#fff8dc
+}
+.d blockquote:before{
+    color:#7a5230;
+    content:'“';
+    font-size: 3em;
+    line-height: 0.1em;
+    margin-right: 0.25em;
+    vertical-align: -0.4em;
+    border-left: 5px solid #fff8dc;
+    }
+    .d blockquote p {
+      display: inline;
+    }
+.d li{
+    color:7a5230;
+}
+.d p.shade{
+    color:grey;
+}
+.d a:link{
+    color:#0040ff;
+    text-decoration: none;
+}
+.d a:visited{
+    color:#5900ff;
+    text-decoration: none;
+}

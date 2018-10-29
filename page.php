@@ -4,9 +4,17 @@
 
 	<head>
 		<title> 페이지 읽기 </title>
-		<meta charset="UTF-8">
+		<meta charset="UTF-8" http-equiv="Cache-Control" content="No-Cache">
+		<head>
+<link rel="stylesheet" href="document.css">
+</head>
 		<style>
-
+			h1 {
+				color:#7a5230;
+			}
+			hr.title {
+				color:#fff8dc
+			}
 /* 헤더 영역 스타일 지정 */
 		   #m_header img {
 			float:left; 
@@ -84,17 +92,26 @@ frm.style.height = contentHeight + 4 + "px";
 		<?php
 		$name = $_POST['name'];
 		if(!isset($name)){
-			$name = "d/frontpage";
+			$name = "frontpage";
 		}
 		?>
 		<section id="m_main">
 			<span class="tbar">
 			<ul>
-				<li> <a href="do.php" target="m_view"><img src="img/pencil(1).png"></a> </li>
+				<li> 
+					<form action="do.php" method="post">
+						<input type="hidden" name="less" value="<?php echo $name;?>" />
+						<input type="submit" value="✍" />
+					</form>
+				</li>
 		   </ul>
 			</span>
-			<iframe src="<?php echo $name; ?>.html" name="m_view" width="1000px" height="0px" marginwidth="0px" marginheight="0px" frameborder="no" scrolling="no" onload="resizeFrame(this)">
+<span id="d">
+			<h1><?php echo $name;?></h1>
+			<hr class="title">
+			<iframe src="d/<?php echo $name; ?>.html" name="m_view" width="1000px" height="0px" marginwidth="0px" marginheight="0px" frameborder="no" scrolling="no" onload="resizeFrame(this)">
 		   </iframe>
+	</span>
 		</section>
 	   </div>
 	</body>
