@@ -71,7 +71,7 @@
 $naeyong = htmlspecialchars($_POST['contents']);
 $chamgo = htmlspecialchars($_POST['age']);
 ?>
-<script type="text/javascript">
+		<script type="text/javascript">
 
 // 아이프레임 세로 자동 리사이징 (세로값을 자동으로 추출하여 스크롤바 생기지 않음)
 
@@ -94,6 +94,10 @@ frm.style.height = contentHeight + 4 + "px";
 		if(!isset($name)){
 			$name = "frontpage";
 		}
+		$getturn = $_GET['return'];
+		if(isset($getturn)){
+			$name = $getturn;
+		}
 		?>
 		<section id="m_main">
 			<span class="tbar">
@@ -110,6 +114,8 @@ frm.style.height = contentHeight + 4 + "px";
 			<h1><?php echo $name;?></h1>
 			<hr class="title">
 			<iframe src="d/<?php echo $name; ?>.html" name="m_view" width="1000px" height="0px" marginwidth="0px" marginheight="0px" frameborder="no" scrolling="no" onload="resizeFrame(this)">
+		   </iframe>
+		   <iframe src="" name="m_text" width="1000px" height="0px" marginwidth="0px" marginheight="0px" frameborder="no" onload="resizeFrame(this)">
 		   </iframe>
 	</span>
 		</section>

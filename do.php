@@ -8,13 +8,14 @@
 $title = $_POST['less'];
 ?>
 <?php 
+                /* 파일 열기 */
      $f = @fopen("d/$title.html",'r') or exit("파일을 열 수 없습니다..!"); 
      $result = ''; 
      while(!feof($f)){ 
         $result .= fgets($f,10);
      } fclose($f);
 ?>
-
+<!-- 입력 폼 -->
 <form action="save.php" method="post">
 <fieldset>
     <legend><?php echo $title;?> 편집</legend>

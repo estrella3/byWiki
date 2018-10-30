@@ -4,28 +4,29 @@ $fddg = $_POST['title'];
 $pw = $_POST['pwpw'];
 ?>
 <?php
-    $dgfd = htmlspecialchars($dgfd);
-    $dgfd = str_replace("&lt;h2&gt;","<h2>",$dgfd);
-    $dgfd = str_replace("&lt;/h2&gt;","</h2>",$dgfd);
-    $dgfd = str_replace("&lt;h3&gt;","<h3>",$dgfd);
-    $dgfd = str_replace("&lt;/h3&gt;","</h3>",$dgfd);
-    $dgfd = str_replace("&lt;h4&gt;","<h4>",$dgfd);
-    $dgfd = str_replace("&lt;/h4&gt;","</h4>",$dgfd);
-    $dgfd = str_replace("&lt;h5&gt;","<h5>",$dgfd);
-    $dgfd = str_replace("&lt;/h5&gt;","</h5>",$dgfd);
-    $dgfd = str_replace("&lt;h6&gt;","<h6>",$dgfd);
-    $dgfd = str_replace("&lt;/h6&gt;","</h6>",$dgfd);
-    $dgfd = str_replace("&lt;blockquote&gt;","<blockquote>",$dgfd);
-    $dgfd = str_replace("&lt;/blockquote&gt;","</blockquote>",$dgfd);
-    $dgfd = str_replace("&lt;a","<a",$dgfd);
-    $dgfd = str_replace("&gt;",">",$dgfd);
-    $dgfd = str_replace("&lt;p&gt;","<p>",$dgfd);
-    $dgfd = str_replace("&lt;/p&gt;","</p>",$dgfd);
-    $dgfd = str_replace("&lt;div&gt;","<div>",$dgfd);
-    $dgfd = str_replace("&lt;/div&gt;","</div>",$dgfd);
-    $dgfd = str_replace("&lt;div","<div",$dgfd);
+/*XSS 방지 및 허용된 HTML 코드만 사용하도록 변환*/
+    $dgfd = str_replace("<","[",$dgfd);
+    $dgfd = str_replace("[목차]",'<link rel="stylesheet" href="document.css">',$dgfd);
+    $dgfd = str_replace("[link","<link",$dgfd);
+    $dgfd = str_replace("[div","<div",$dgfd);
+    $dgfd = str_replace("[/div","</div",$dgfd);
+    $dgfd = str_replace("[/a","</a",$dgfd);
+    $dgfd = str_replace("[a","<a",$dgfd);
+    $dgfd = str_replace("[blockquote","<blockquote",$dgfd);
+    $dgfd = str_replace("[/blockquote","</blockquote",$dgfd);
+    $dgfd = str_replace("[/p","</p",$dgfd);
+    $dgfd = str_replace("[p","<p",$dgfd);
+    $dgfd = str_replace("[/div","</div",$dgfd);
+    $dgfd = str_replace("[div","<div",$dgfd);
+    $dgfd = str_replace("[/h2","</h2",$dgfd);
+    $dgfd = str_replace("[h2","<h2",$dgfd);
+    $dgfd = str_replace("[/h3","</h3",$dgfd);
+    $dgfd = str_replace("[h3","<h3",$dgfd);
+    $dgfd = str_replace("[/h4","</h4",$dgfd);
+    $dgfd = str_replace("[h4","<h4",$dgfd);
 ?>
 <?php
+/* 파일 저장 부분 */
     if($pw == "0302"){
     $myfile = fopen("d/$fddg.html", "w") or die("파일을 열 수 없습니다..!");
     fwrite($myfile, $dgfd);
@@ -36,4 +37,4 @@ $pw = $_POST['pwpw'];
     echo "$fddg 를 편집하지 못했습";
     }
 ?>
-니다.<a href="d/<?php echo $fddg;?>.html">문서 보기</a>
+니다.<a href="page.php?return=<?php echo $fddg;?>">문서 보기</a>
