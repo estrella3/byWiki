@@ -16,6 +16,32 @@ $title = $_POST['less'];
      } fclose($f);
 ?>
 <!-- 입력 폼 -->
+<?php
+    /* 문법 변환*/
+    $result = str_replace("<a href=","[[",$result);
+    $result = str_replace("</a>","]]",$result);
+    $result = str_replace('<a target="blank" href=',"[([",$result);
+    $result = str_replace("<strong>","**",$result);
+    $result = str_replace("</strong>","/*",$result);
+    $result = str_replace("<em>","__",$result);
+    $result = str_replace("</em>","/_",$result);
+    $result = str_replace("<mark>","?m",$result);
+    $result = str_replace("</mark>","?/m",$result);
+    $result = str_replace('<span id="shade">',"?s",$result);
+    $result = str_replace("</span>","?/s",$result);
+    $result = str_replace("<h2>","=2=",$result);
+    $result = str_replace("</h2>","/2=",$result);
+    $result = str_replace("<h3>","=3=",$result);
+    $result = str_replace("</h3>","/3=",$result);
+    $result = str_replace("<h4>","=4=",$result);
+    $result = str_replace("/4=","</h4>",$result);
+    $result = str_replace("<h5>","=5=",$result);
+    $result = str_replace("</h5>","/5=",$result);
+    $result = str_replace("<h6>","=6=",$result);
+    $result = str_replace("</h6>","/6=",$result);
+    $result = str_replace("<blockquote>","?>",$result);
+    $result = str_replace("</blockquote>","/?",$result);
+?>
 <form action="save.php" method="post">
 <fieldset>
     <legend><?php echo $title;?> 편집</legend>
