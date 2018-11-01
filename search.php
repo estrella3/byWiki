@@ -17,7 +17,7 @@ if ($is_file_exist) {
 }
 else {
     echo '해당 문서가 존재하지 않습니다.';
-    echo '본문 검색 결과 찾기는 지원 예정입니다.'
+    echo "문서를 새로 만드시겠습니까? <a href=edit.php>이동하기</a>";
 }
 ?>
 </body>

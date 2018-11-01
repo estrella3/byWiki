@@ -41,6 +41,11 @@ $title = $_POST['less'];
     $result = str_replace("</h6>","/6=",$result);
     $result = str_replace("<blockquote>","?>",$result);
     $result = str_replace("</blockquote>","/?",$result);
+    $result = str_replace("<button id=button1 onclick=button1_click();>*</button><script> 
+    function button1_click() 
+    { 
+        alert(","[*",$result);
+    $result = str_replace(") } </script>","*]",$result);
 ?>
 <form action="save.php" method="post">
 <fieldset>

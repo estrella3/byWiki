@@ -6,6 +6,7 @@ $pw = $_POST['pwpw'];
 <?php
 /*XSS 방지 및 편집 저장시 편의*/
     $dgfd = str_replace("<","[",$dgfd);
+    $dgfd = str_replace("{","(",$dgfd);
     $dgfd = str_replace("[목차]",'<link rel="stylesheet" href="document.css">',$dgfd);
     $dgfd = str_replace("[link","<link",$dgfd);
     $dgfd = str_replace("[div","<div",$dgfd);
@@ -34,6 +35,8 @@ $pw = $_POST['pwpw'];
     $dgfd = str_replace("[/mark","</mark",$dgfd);
     $dgfd = str_replace("[span","<span",$dgfd);
     $dgfd = str_replace("[/span","</span",$dgfd);
+    $dgfd = str_replace("[script","<script",$dgfd);
+    $dgfd = str_replace("[/script","</script",$dgfd);
 /* 문법 HTML 코드로 변환 */
     $dgfd = str_replace("[[","<a href=",$dgfd);
     $dgfd = str_replace("]]","</a>",$dgfd);
@@ -58,6 +61,12 @@ $pw = $_POST['pwpw'];
     $dgfd = str_replace("/6=","</h6>",$dgfd);
     $dgfd = str_replace("?>","<blockquote>",$dgfd);
     $dgfd = str_replace("/?","</blockquote>",$dgfd);
+    $dgfd = str_replace("[*","<button id=button1 onclick=button1_click();>*</button><script> 
+    function button1_click() 
+    { 
+        alert(
+    ",$dgfd);
+    $dgfd = str_replace("*]",") } </script>",$dgfd);
 ?>
 <?php
 /* 파일 저장 부분 */
