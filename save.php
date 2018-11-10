@@ -7,7 +7,8 @@ $pw = $_POST['pwpw'];
 /*XSS 방지 및 편집 저장시 편의*/
     $dgfd = str_replace("<","[",$dgfd);
     $dgfd = str_replace("{","(",$dgfd);
-    $dgfd = str_replace("[목차]",'<link rel="stylesheet" href="document.css">',$dgfd);
+            $dgfd =str_replace("[목차]","[시작]",$dgfd);
+    $dgfd = str_replace("[시작]",'<link rel="stylesheet" href="document.css">',$dgfd);
     $dgfd = str_replace("[link","<link",$dgfd);
     $dgfd = str_replace("[div","<div",$dgfd);
     $dgfd = str_replace("[/div","</div",$dgfd);
@@ -35,8 +36,6 @@ $pw = $_POST['pwpw'];
     $dgfd = str_replace("[/mark","</mark",$dgfd);
     $dgfd = str_replace("[span","<span",$dgfd);
     $dgfd = str_replace("[/span","</span",$dgfd);
-    $dgfd = str_replace("[script","<script",$dgfd);
-    $dgfd = str_replace("[/script","</script",$dgfd);
 /* 문법 HTML 코드로 변환 */
     $dgfd = str_replace("[[","<a href=",$dgfd);
     $dgfd = str_replace("]]","</a>",$dgfd);

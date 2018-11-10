@@ -4,73 +4,9 @@
 
 	<head>
 		<title> 자체엔진 시험장</title>
-		<meta charset="UTF-8" http-equiv="Cache-Control" content="No-Cache">
-		<style>
-/* 헤더 영역 스타일 지정 */
-		   #m_header img {
-			float:left; 
-			margin-right:20px;
-			}
-
-		   #m_header {  
-			font-family: 'Serif';
-			background-color:#fff8dc;
-			border-top:2px solid #7a5230;
-			border-right:2px solid #7a5230;
-			border-left: 2px solid #7a5230;
-			height:150px;
-		        }
-		   #m_header li {                  
-			list-style-type:none;
-			display:inline;
-			float:right; 
-  
-			border:2px solid #7a5230;
-			border-radius:5px;
-			background-color:white;
-			padding:10px 20px;
-			margin-right:10px; 
-		        }
-
-		   #m_header a {   
-			text-decoration:none;
-			color:#7a5230;
-			}
-
-
-/* 섹션 영역 스타일 지정 */
-		   #m_main iframe {
- 		        width:100%;
- 		        height:600px; 
- 		        border:0;
-		   	}
-
-		   #m_main {
-			width:100%;
-			background-color:#fff;
-			text-align:center
-		        }
-
-/* 푸터 영역 스타일 지정 */
-		   #m_footer {
-			clear:both;
-			padding : 1px 1px;
-			text-align:center; 
-			font-size:12px;
-			background-color:cornsilk;
-			border-bottom:2px solid #7a5230;
-			border-right:2px solid #7a5230;
-			border-left: 2px solid #7a5230;
-		          }
-
-/* 전체 너비 및 가운데 배치 */
-		#total_lay{
-			max-width:1000px;
-			margin:0 auto;
-			}
-		</style>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="document.css">
 		<script type="text/javascript">
-
 			// 아이프레임 세로 자동 리사이징 (세로값을 자동으로 추출하여 스크롤바 생기지 않음)
 			
 			function resizeFrame(frm) {
@@ -97,15 +33,13 @@
 		   <h1> 개발중인 사이트 </h1>
 		   </a>
 		   <ul>
-			   	<li> <a href="search.html" target="m_view"> 검색 </a></li>
-				<li> <a href="user.html" target="m_view"> 설정 </a> </li>
-			  	<li> <a href="page.php" target="m_view"> 대문 </a></li>
+				   <li><form action="search.php" method="post" target="m_view"><input type="text" name="name" class="searchtext" placeholder="검색.."/>
+					<input type="image" src="img\698627-icon-111-search-512(1).png"></form></li>
 		   </ul>
  		</header> 
 
 		<section id="m_main">
-				<iframe src="page.php" name="m_view" width="1000px" height="0px" marginwidth="0px" marginheight="0px" frameborder="no" scrolling="no" onload="resizeFrame(this)">
-		   </iframe>
+				<iframe src="page.php" name="m_view" frameborder="no" scrolling="no" onload="resizeFrame(this)">이 브라우저 또는 기기는 iframe 태그를 지원하지 않아 불러올 수 없습니다.</iframe>
 		</section>
 		<footer id="m_footer">
 		   <p> 시작은 미약하지만 끝은 그럴 듯 하게 </p>

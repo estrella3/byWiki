@@ -31,14 +31,10 @@
 		        }
 		   .tbar li {                  
 			list-style-type:none;
-			display:inline;
 			float:right; 
   
-			border:2px solid #7a5230;
-			border-radius:5px;
+			border:none;
 			background-color:white;
-			padding:5px 7px;
-			margin-right:10px; 
 		        }
 
 		   #m_header a {   
@@ -66,26 +62,30 @@
 			max-width:1000px;
 			margin:0 auto;
 			}
+
+		.ififrame{
+			overflow: hidden; 
+			text-align: justify; 
+		}
 		</style>
 <?php
 $naeyong = htmlspecialchars($_POST['contents']);
 $chamgo = htmlspecialchars($_POST['age']);
 ?>
 		<script type="text/javascript">
-
-// 아이프레임 세로 자동 리사이징 (세로값을 자동으로 추출하여 스크롤바 생기지 않음)
-
-function resizeFrame(frm) {
-
-frm.style.height = "auto";
-
-contentHeight = frm.contentWindow.document.body.scrollHeight;
-
-frm.style.height = contentHeight + 4 + "px";
-
-}
-
-</script>
+			// 아이프레임 세로 자동 리사이징 (세로값을 자동으로 추출하여 스크롤바 생기지 않음)
+			
+			function resizeFrame(frm) {
+			
+			frm.style.height = "auto";
+			
+			contentHeight = frm.contentWindow.document.body.scrollHeight;
+			
+			frm.style.height = contentHeight + 4 + "px";
+			
+			}
+			
+			</script>
 	</head>
 
 	<body>
@@ -105,7 +105,7 @@ frm.style.height = contentHeight + 4 + "px";
 				<li> 
 					<form action="do.php" method="post">
 						<input type="hidden" name="less" value="<?php echo $name;?>" />
-						<input type="submit" value="✍" />
+						<input type="image" src="img/Editing-edit-icon.png">
 					</form>
 				</li>
 		   </ul>
@@ -113,9 +113,7 @@ frm.style.height = contentHeight + 4 + "px";
 <span id="d">
 			<h1><?php echo $name;?></h1>
 			<hr class="title">
-			<iframe src="d/<?php echo $name; ?>.html" name="m_view" width="1000px" height="0px" marginwidth="0px" marginheight="0px" frameborder="no" scrolling="no" onload="resizeFrame(this)">
-		   </iframe>
-		   <iframe src="" name="m_text" width="1000px" height="0px" marginwidth="0px" marginheight="0px" frameborder="no" onload="resizeFrame(this)">
+			<iframe src="d/<?php echo $name; ?>.html" name="m_view" frameborder="no" onload="resizeFrame(this) class="ififrame">
 		   </iframe>
 	</span>
 		</section>

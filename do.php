@@ -18,6 +18,7 @@ $title = $_POST['less'];
 <!-- 입력 폼 -->
 <?php
     /* 문법 변환*/
+    $result = str_replace('<link rel="stylesheet" href="document.css">',"[시작]",$result);
     $result = str_replace("<a href=","[[",$result);
     $result = str_replace("</a>","]]",$result);
     $result = str_replace('<a target="blank" href=',"[([",$result);
