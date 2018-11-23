@@ -6,7 +6,7 @@
     <body>
         <h2>검색 결과</h2>
 <?php
-$jemok = str_replace(" ","_",$_POST['name']);
+$jemok = str_replace(" ","%20",$_POST['name']);
 ?>
 
 <?php

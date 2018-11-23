@@ -1,82 +1,65 @@
 <?php
-$dgfd = $_POST['contents'];
-$fddg = $_POST['title'];
+include 'fix.php';
+$contents = $_POST['contents'];
+$title = $_POST['title'];
 $pw = $_POST['pwpw'];
 ?>
+<meta http-equiv="refresh" content="3; URL=index.php?return=<?php echo $title;?>">
 <?php
-/*XSS 방지 및 편집 저장시 편의*/
-    $dgfd = str_replace("<","[",$dgfd);
-    $dgfd = str_replace("{","(",$dgfd);
-            $dgfd =str_replace("[목차]","[시작]",$dgfd);
-    $dgfd = str_replace("[시작]",'<link rel="stylesheet" href="document.css">',$dgfd);
-    $dgfd = str_replace("[link","<link",$dgfd);
-    $dgfd = str_replace("[div","<div",$dgfd);
-    $dgfd = str_replace("[/div","</div",$dgfd);
-    $dgfd = str_replace("[/a","</a",$dgfd);
-    $dgfd = str_replace("[a","<a",$dgfd);
-    $dgfd = str_replace("[blockquote","<blockquote",$dgfd);
-    $dgfd = str_replace("[/blockquote","</blockquote",$dgfd);
-    $dgfd = str_replace("[/p","</p",$dgfd);
-    $dgfd = str_replace("[p","<p",$dgfd);
-    $dgfd = str_replace("[/h2","</h2",$dgfd);
-    $dgfd = str_replace("[h2","<h2",$dgfd);
-    $dgfd = str_replace("[/h3","</h3",$dgfd);
-    $dgfd = str_replace("[h3","<h3",$dgfd);
-    $dgfd = str_replace("[/h4","</h4",$dgfd);
-    $dgfd = str_replace("[h4","<h4",$dgfd);
-    $dgfd = str_replace("[h5","<h5",$dgfd);
-    $dgfd = str_replace("[/h5","</h5",$dgfd);
-    $dgfd = str_replace("[h6","<h6",$dgfd);
-    $dgfd = str_replace("[/h6","</h6",$dgfd);
-    $dgfd = str_replace("[em","<em",$dgfd);
-    $dgfd = str_replace("[/em","</em",$dgfd);
-    $dgfd = str_replace("[strong","<strong",$dgfd);
-    $dgfd = str_replace("[/strong","</strong",$dgfd);
-    $dgfd = str_replace("[mark","<mark",$dgfd);
-    $dgfd = str_replace("[/mark","</mark",$dgfd);
-    $dgfd = str_replace("[span","<span",$dgfd);
-    $dgfd = str_replace("[/span","</span",$dgfd);
+/*XSS 방지 및 편집 저장*/ 
+    $contents = str_replace("<","[",$contents);
+    $contents = str_replace("{","(",$contents);
+            $contents =str_replace("[목차]","[시작]",$contents);
+    $contents = str_replace("[시작]",'<link rel="stylesheet" href="document.css">',$contents);
+    $contents = str_replace("[br","<br",$contents);
 /* 문법 HTML 코드로 변환 */
-    $dgfd = str_replace("[[","<a href=",$dgfd);
-    $dgfd = str_replace("]]","</a>",$dgfd);
-    $dgfd = str_replace("[([",'<a target="blank" href=',$dgfd);
-    $dgfd = str_replace("**","<strong>",$dgfd);
-    $dgfd = str_replace("/*","</strong>",$dgfd);
-    $dgfd = str_replace("__","<em>",$dgfd);
-    $dgfd = str_replace("/_","</em>",$dgfd);
-    $dgfd = str_replace("?m","<mark>",$dgfd);
-    $dgfd = str_replace("?/m","</mark>",$dgfd);
-    $dgfd = str_replace("?s",'<span id="shade">',$dgfd);
-    $dgfd = str_replace("?/s","</span>",$dgfd);
-    $dgfd = str_replace("=2=","<h2>",$dgfd);
-    $dgfd = str_replace("/2=","</h2>",$dgfd);
-    $dgfd = str_replace("=3=","<h3>",$dgfd);
-    $dgfd = str_replace("/3=","</h3>",$dgfd);
-    $dgfd = str_replace("=4=","<h4>",$dgfd);
-    $dgfd = str_replace("/4=","</h4>",$dgfd);
-    $dgfd = str_replace("=5=","<h5>",$dgfd);
-    $dgfd = str_replace("/5=","</h5>",$dgfd);
-    $dgfd = str_replace("=6=","<h6>",$dgfd);
-    $dgfd = str_replace("/6=","</h6>",$dgfd);
-    $dgfd = str_replace("?>","<blockquote>",$dgfd);
-    $dgfd = str_replace("/?","</blockquote>",$dgfd);
-    $dgfd = str_replace("[*","<button id=button1 onclick=button1_click();>*</button><script> 
-    function button1_click() 
-    { 
-        alert(
-    ",$dgfd);
-    $dgfd = str_replace("*]",") } </script>",$dgfd);
+    $contents = str_replace("[[","<a href=",$contents);
+    $contents = str_replace("]]","</a>",$contents);
+    $contents = str_replace("[([",'<a target="blank" href=',$contents);
+    $contents = str_replace("**","<strong>",$contents);
+    $contents = str_replace("/*","</strong>",$contents);
+    $contents = str_replace("__","<em>",$contents);
+    $contents = str_replace("/_","</em>",$contents);
+    $contents = str_replace("?m","<mark>",$contents);
+    $contents = str_replace("?/m","</mark>",$contents);
+    $contents = str_replace("?s",'<span id="shade">',$contents);
+    $contents = str_replace("?/s","</span>",$contents);
+    $contents = str_replace("=2=","<h2>",$contents);
+    $contents = str_replace("/2=","</h2>",$contents);
+    $contents = str_replace("=3=","<h3>",$contents);
+    $contents = str_replace("/3=","</h3>",$contents);
+    $contents = str_replace("=4=","<h4>",$contents);
+    $contents = str_replace("/4=","</h4>",$contents);
+    $contents = str_replace("=5=","<h5>",$contents);
+    $contents = str_replace("/5=","</h5>",$contents);
+    $contents = str_replace("=6=","<h6>",$contents);
+    $contents = str_replace("/6=","</h6>",$contents);
+    $contents = str_replace("?>","<blockquote>",$contents);
+    $contents = str_replace("/?","</blockquote>",$contents);
+    $contents = str_replace("[*","<button id=button1 onclick=button1_click();>*</button><script>function button1_click(){alert(",$contents);
+    $contents = str_replace("*]", ")}</script>",$contents);
+    $contents = str_replace("<ol>", "|#", "$contents");
+    $contents = str_replace("<li>", "##", "$contents");
+    $contents = str_replace("</li>", "/#", "$contents");
+    $contents = str_replace("</ol>", "|#", "$contents");
 ?>
+<style>
+    .redi {
+        color: #7a5230;
+        text-align: center;
+    }
+</style>
+<span class="redi">
 <?php
 /* 파일 저장 부분 */
-    if($pw == "0302"){
-    $myfile = fopen("d/$fddg.html", "w") or die("파일을 열 수 없습니다..!");
-    fwrite($myfile, $dgfd);
+    if($pw == $mypassword){
+    $myfile = fopen("d/$title.html", "w") or die("파일을 열 수 없습니다..!");
+    fwrite($myfile, $contents);
     fclose($myfile);
-    echo "저장 완료! 이 편집이 저장됩";
+    echo "편집 완료!";
     }
     else{
-    echo "$fddg 를 편집하지 못했습";
+    echo "비밀번호가 맞지 않거나 오류가 발생했습니다!";
     }
 ?>
-니다.<a href="page.php?return=<?php echo $fddg;?>">문서 보기</a>
+</span>
