@@ -33,7 +33,7 @@
             </header>
             <ul>
               <li><a href="board.html">게시판</a></li>
-              <li><a href="help.html">도움말</a></li>
+              <li><a href='index.php?return=도움말'>도움말</a></li>
             </ul>
           </nav>
         </li>         
